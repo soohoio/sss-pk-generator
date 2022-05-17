@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import * as CryptoJS from 'crypto-js';
 import { cwd } from 'process';
 
@@ -111,12 +111,28 @@ const generateKeyStore = (dir = './') => {
   };
 };
 
-const unlockKeyStore = (keystorePath: string, shares: string[]) => {
+const unlockKeyStore = (keystorePath: string) => {
   const fileContent = readFileSync(keystorePath).toString();
   const keyJson: {
     address: string;
     ciphertext: string;
   } = JSON.parse(fileContent);
+
+  const shares: string[] = [];
+  for (let i = 0; i < 0xff; i++) {
+    const path = resolve(
+      keystorePath,
+      '../',
+      `passphrase-shares-${i + 1}-${keyJson.address}.json`,
+    );
+    const exists = existsSync(path);
+    if (exists) {
+      const json: {
+        passphrase: string;
+      } = JSON.parse(readFileSync(path).toString());
+      shares.push(json.passphrase);
+    }
+  }
 
   return unlockShares(keyJson.ciphertext, shares);
 };

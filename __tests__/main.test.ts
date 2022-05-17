@@ -76,25 +76,25 @@ describe('sss-pk-generator', () => {
     expect(shares.length).toBe(target.n);
 
     {
-      const pk = unlockKeyStore(target.path, shares);
+      const pk = unlockKeyStore(target.path);
       expect(privateKeyToAddress(pk)).toBe(target.address);
     }
 
-    {
-      const pk = unlockKeyStore(target.path, shares.slice(0, target.t));
-      expect(privateKeyToAddress(pk)).toBe(target.address);
-    }
+    // {
+    //   const pk = unlockKeyStore(target.path, shares.slice(0, target.t));
+    //   expect(privateKeyToAddress(pk)).toBe(target.address);
+    // }
 
-    {
-      let pk: any = '';
-      try {
-        pk = unlockKeyStore(target.path, shares.slice(0, target.t - 1));
-        privateKeyToAddress(pk);
-      } catch {
-        pk = 'ERR:catch';
-      }
-      expect(pk).toBe('ERR:catch');
-    }
+    // {
+    //   let pk: any = '';
+    //   try {
+    //     pk = unlockKeyStore(target.path);
+    //     privateKeyToAddress(pk);
+    //   } catch {
+    //     pk = 'ERR:catch';
+    //   }
+    //   expect(pk).toBe('ERR:catch');
+    // }
   });
 
   afterAll(() => {
