@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
-    "lib": ["es2020"],
+    "target": "es6",
+    "module": "es6",
+    "lib": ["es6"],
     "declaration": true,
     "moduleResolution": "node",
     "rootDir": ".",
@@ -18,10 +18,7 @@
     "noUnusedParameters": false,
     "noImplicitAny": true,
     "noImplicitThis": false,
-    "strictNullChecks": false,
+    "strictNullChecks": false
   },
-  "include": [
-    "src/**/*",
-    "__tests__/**/*"
-  ]
+  "include": ["src/**/*", "__tests__/**/*"]
 }
