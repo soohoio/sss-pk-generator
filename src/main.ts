@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 import * as CryptoJS from 'crypto-js';
+import { cwd } from 'process';
 
 const secrets = require('secrets.js-grempe');
 const _privateKeyToPublicKey = require('ethereum-private-key-to-public-key');
@@ -80,24 +81,22 @@ const unlockShares = (ciphertext: string, shares: string[]) => {
   return _decryptAES(ciphertext, passphrase);
 };
 
-const generateKeyStore = (dir = '../') => {
+const generateKeyStore = (dir = './') => {
   const passphraseLength = 31;
-  const numberOfShares = 3;
-  const threshold = 2;
-  // const numberOfShares = 5;
-  // const threshold = 3;
+  const numberOfShares = 5;
+  const threshold = 3;
 
   const res = generateKey(passphraseLength, numberOfShares, threshold);
 
   const filename = `keystore-${res.address}.json`;
-  const path = resolve(__dirname, dir, filename);
+  const path = resolve(cwd(), dir, filename);
   const keystoreJson = _jsonKeyStringBuilder(res.address, res.ciphertext);
 
   _makeNodeJsonFile(path, keystoreJson);
 
   for (let i = 0; i < res.shares.length; i++) {
     _makeNodeJsonFile(
-      resolve(__dirname, dir, `passphrase-shares-${i + 1}-${res.address}.json`),
+      resolve(cwd(), dir, `passphrase-shares-${i + 1}-${res.address}.json`),
       `{
   "passphrase": "${res.shares[i]}"
 }`,
