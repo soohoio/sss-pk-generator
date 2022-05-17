@@ -1,10 +1,10 @@
 {
   "name": "sss-pk-generator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "build/src/main.js",
   "types": "build/src/main.d.ts",
-  "type": "module",
+  "type": "commonjs",
   "engines": {
     "node": ">= 16.13 <17"
   },
