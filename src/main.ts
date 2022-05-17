@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 import * as CryptoJS from 'crypto-js';
 
-const secrets = require('secrets.js-grempe');
+import * as secrets from 'secrets.js-grempe';
 // @ts-ignore
 import * as _privateKeyToPublicKey from 'ethereum-private-key-to-public-key';
 // @ts-ignore
