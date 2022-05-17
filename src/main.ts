@@ -3,8 +3,10 @@ import { readFileSync, writeFileSync } from 'fs';
 import * as CryptoJS from 'crypto-js';
 
 const secrets = require('secrets.js-grempe');
-const _privateKeyToPublicKey = require('ethereum-private-key-to-public-key');
-const _publicKeyToAddress = require('ethereum-public-key-to-address');
+// @ts-ignore
+import * as _privateKeyToPublicKey from 'ethereum-private-key-to-public-key';
+// @ts-ignore
+import * as _publicKeyToAddress from 'ethereum-public-key-to-address';
 
 const _jsonKeyStringBuilder = (address: string, ciphertext: string) => {
   return `{
