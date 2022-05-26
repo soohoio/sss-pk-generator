@@ -14,6 +14,10 @@ generateKey = (passphraseList: string[], threshold: number)
 ```
 
 ```javascript
-generateKey = (passphraseList: string[], threshold: number)
-```
+unlockShares = (
+  pairs: {
+    cipherparams: string | { ct: string; iv: string; s: string };
+    secret: string;
+  }[],
+)
 ```
