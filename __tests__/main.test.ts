@@ -31,6 +31,8 @@ describe('sss-pk-generator', () => {
     expect(res.address.length).toBe(42);
     expect(res.shares.length).toBe(passphraseList.length);
 
+    console.log(res.shares)
+
     shares = res.shares;
     newAddress = res.address;
   });

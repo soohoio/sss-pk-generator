@@ -1,6 +1,6 @@
 {
   "name": "sss-pk-generator",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "",
   "main": "build/src/main.js",
   "types": "build/src/main.d.ts",
