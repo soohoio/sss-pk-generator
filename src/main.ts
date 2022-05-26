@@ -58,7 +58,7 @@ const _decryptAES = (
   cipherParams: string | { ct: string; iv: string; s: string },
   secret: string,
 ): string => {
-  const bytes = CryptoJS.AES.decrypt(cipherParams.toString(), secret, {
+  const bytes = CryptoJS.AES.decrypt(JSON.stringify(cipherParams), secret, {
     format: _aesJsonFormatter,
   });
   return bytes.toString(CryptoJS.enc.Utf8);

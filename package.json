@@ -1,6 +1,6 @@
 {
   "name": "sss-pk-generator",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "main": "build/src/main.js",
   "types": "build/src/main.d.ts",
@@ -34,9 +34,8 @@
     "start": "node build/src/main.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
-    "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -w -p tsconfig.json",
-    "build:release": "npm run clean && tsc -p tsconfig.release.json",
+    "build:release": "npm run clean && tsc -p tsconfig.json",
     "lint": "eslint . --ext .ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
