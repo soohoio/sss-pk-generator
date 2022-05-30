@@ -77,7 +77,7 @@ const split = (
 ): string[] => {
   const pwHex = secrets.str2hex(secretKey);
   const shares = secrets
-    .share(pwHex, number, threshold)
+    .share(pwHex, number, threshold, 1024)
     .map((s) => s.toString());
 
   return shares;
