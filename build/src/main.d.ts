@@ -3,7 +3,7 @@ declare const publicKeyToAddress: (publicKey: string) => string;
 declare const privateKeyToAddress: (privateKey: string) => string;
 declare const split: (secretKey: string, number: number, threshold: number) => string[];
 declare const combine: (shares: string[]) => string;
-declare const generateKey: (passphraseList: string[], threshold: number) => {
+declare const generateKey: (passphraseList: string[], threshold: number, privateKey?: string) => {
     address: string;
     shares: {
         message: string;

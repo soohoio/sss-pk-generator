@@ -75,12 +75,14 @@ const combine = (shares) => {
     return secrets.hex2str(comb);
 };
 exports.combine = combine;
-const generateKey = (passphraseList, threshold) => {
+const generateKey = (passphraseList, threshold, privateKey) => {
     const number = passphraseList.length;
     if (number < threshold || threshold < 1) {
         throw new Error('0 < threshold <= the number of passphrases');
     }
-    const newPrivateKey = secrets.random(256);
+    const newPrivateKey = privateKey && privateKeyToAddress(privateKey)
+        ? privateKey
+        : secrets.random(256);
     const shares = split(newPrivateKey, number, threshold);
     return {
         address: privateKeyToAddress(newPrivateKey),
